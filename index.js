@@ -25,8 +25,7 @@ app.use(serve(path.join(__dirname, '/client')));
 
 // Consumer
 consumer.on('message', function (message) {
-  const payload = JSON.stringify({ body: message.value });
-  console.log('Return:', payload);
+  console.log('Return:', message.value);
 });
 
 consumer.on('offsetOutOfRange', function (topic) {
@@ -60,7 +59,7 @@ router.post(
     producer.send([
       { topic: 'topic-from-node', partition: 0, messages: message, attributes: 0 }
     ], function (err, result) {
-      console.log('Produce Result: ', err || result);
+      // console.log('Produce Result: ', err || result);
     });
   }
 );

@@ -47,7 +47,7 @@ object Counter {
     val result = stream.map(record => (record.value().toString)).flatMap(_.split(" ")).map(word => (word, 1)).reduceByKey(_ + _)
     result.foreachRDD(rdd => {
       if (rdd.count() > 0) {
-        val output = rdd.collect().mkString("[", ", ", "]")
+        val output = rdd.sortBy(_._2, false).collect().mkString("[", ", ", "]")
         producer.send(new ProducerRecord[String, String]("topic-to-node", "message", output))
       }
     })
