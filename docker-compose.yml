@@ -1,6 +1,5 @@
-version: '2'
+version: "2"
 services:
-
   zoo:
     image: zookeeper:latest
     restart: always
@@ -21,7 +20,7 @@ services:
       - 9092:9092
       - 9192:9192
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: # <HOST_IP>
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.3.166
       KAFKA_ZOOKEEPER_CONNECT: zoo:2181
       KAFKA_CREATE_TOPICS: "topic-from-node:1:1,topic-to-node:1:1"
       JMX_PORT: 9192

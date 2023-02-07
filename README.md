@@ -6,6 +6,17 @@
 
 Do not use localhost or 127.0.0.1 as the host ip.
 
+```bash
+# mac
+ifconfig | grep inet
+
+inet 192.168.XXX.XXX netmask 0xffffff00 broadcast 192.168.XXX.255
+```
+
+```yml
+KAFKA_ADVERTISED_HOST_NAME: 192.168.XXX.XXX
+```
+
 ### Setup Node
 
 ```bash
@@ -19,7 +30,7 @@ yarn
 Start a cluster:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 Start a node server:
@@ -32,12 +43,12 @@ Go to: [localhost:3000](http://localhost:3000)
 
 Send:
 
-> Coke or anthracite is heated to incandescence by an air blast 
-> in a generator lined with fire-brick, and the heated products 
-> of combustion as they leave the generator and enter 
-> the superheaters are supplied with more air, which causes 
-> the combustion of carbon monoxide present in the producer 
-> gas and heats up the fire-brick baffles with which 
+> Coke or anthracite is heated to incandescence by an air blast
+> in a generator lined with fire-brick, and the heated products
+> of combustion as they leave the generator and enter
+> the superheaters are supplied with more air, which causes
+> the combustion of carbon monoxide present in the producer
+> gas and heats up the fire-brick baffles with which
 > the superheater is filled.
 
 In Terminal:
@@ -74,5 +85,12 @@ Return: [
 ## Clean up
 
 ```bash
-docker-compose up -d
+docker compose down -v
 ```
+
+---
+
+## Build sbt
+
+- sbt: assmbely
+- `spark/target/scala-2.12/wordcounter.jar`
