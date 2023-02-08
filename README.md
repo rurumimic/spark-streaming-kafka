@@ -109,6 +109,10 @@ Return: [
       - Enable JMX Polling (Set JMX_PORT env variable before starting kafka server)
       - Poll consumer information (Not recommended for large # of consumers if ZK is used for offsets tracking on older Kafka versions)
 
+## Spark UI
+
+[localhost:4040/streaming](http://localhost:4040/streaming)
+
 ---
 
 ## Clean up

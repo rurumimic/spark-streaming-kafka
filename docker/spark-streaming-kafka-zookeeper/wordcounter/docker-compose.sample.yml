@@ -48,4 +48,4 @@ services:
       - 7077:7077
     volumes:
       - ./wordcounter.jar:/tmp/wordcounter.jar
-    command: spark-submit --master spark://spark:7077 /tmp/wordcounter.jar
+    command: spark-submit --master spark://spark:7077 /tmp/wordcounter.jar --kafka kafka:9092

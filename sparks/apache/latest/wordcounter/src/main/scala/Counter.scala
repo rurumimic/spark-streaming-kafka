@@ -12,13 +12,21 @@ import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
 import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 
 object Counter {
-  def main(args: Array[String]): Unit = {
 
-    val conf = new SparkConf().setMaster("local").setAppName("NumberCount")
-    val streamingContext = new StreamingContext(conf, Seconds(3))
+  private val INTERVAL = Seconds(3);
+
+  private val MASTER = "local"
+//  private val KAFKA = "kafka:9092" // "localhost:9092"
+  private val KAFKA = "localhost:9092"
+
+  private val FROM_TOPIC = "topic-from-node"
+  private val TO_TOPIC = "topic-to-node"
+  def main(args: Array[String]): Unit = {
+    val conf = new SparkConf().setMaster(MASTER).setAppName("NumberCount")
+    val streamingContext = new StreamingContext(conf, INTERVAL)
 
     val kafkaParams = Map[String, Object](
-      "bootstrap.servers" -> "kafka:9092",
+      "bootstrap.servers" -> KAFKA,
       "key.deserializer" -> classOf[StringDeserializer],
       "value.deserializer" -> classOf[StringDeserializer],
       "group.id" -> "use_a_separate_group_id_for_each_stream",
@@ -26,7 +34,7 @@ object Counter {
       "enable.auto.commit" -> (false: java.lang.Boolean)
     )
 
-    val topics = Array("topic-from-node")
+    val topics = Array(FROM_TOPIC)
 
     val stream = KafkaUtils.createDirectStream[String, String](
       streamingContext,
@@ -36,7 +44,7 @@ object Counter {
 
     val kafkaProducerProps: Properties = {
       val props = new Properties()
-      props.put("bootstrap.servers", "kafka:9092")
+      props.put("bootstrap.servers", KAFKA)
       props.put("key.serializer", classOf[StringSerializer].getName)
       props.put("value.serializer", classOf[StringSerializer].getName)
       props
@@ -48,7 +56,7 @@ object Counter {
     result.foreachRDD(rdd => {
       if (rdd.count() > 0) {
         val output = rdd.sortBy(_._2, false).collect().mkString("[", ", ", "]")
-        producer.send(new ProducerRecord[String, String]("topic-to-node", "message", output))
+        producer.send(new ProducerRecord[String, String](TO_TOPIC, "message", output))
       }
     })
 
