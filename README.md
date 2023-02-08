@@ -1,8 +1,36 @@
 # Spark Streaming + Kafka
 
+## Examples Versions
+
+- Sparks
+  - Apache
+    - Latest
+      - wordcounter
+        - OpenJDK 19.0.2
+        - Scala 2.13.10
+  - Cloudera
+    - CDH 7.1.7
+      - wordcounter
+        - OpenJDK 11.0.9.1
+        - Scala 2.12.17
+
+---
+
 ## Setup
 
-`docker-compose.yml`: Line 24. Set `KAFKA_ADVERTISED_HOST_NAME: # <HOST_IP>`
+### Docker Compose
+
+- spark-streaming-kafka
+  - wordcounter
+- spark-streaming-kafka-zookeeper
+  - wordcounter
+    - [docker-compose.sample.yml](docker/spark-streaming-kafka-zookeeper/wordcounter/docker-compose.sample.yml)
+
+`docker-compose.sample.yml`: Line 24. Set `KAFKA_ADVERTISED_HOST_NAME: # <HOST_IP>`
+
+```bash
+cp docker-compose.sample.yml docker-compose.yml
+```
 
 Do not use localhost or 127.0.0.1 as the host ip.
 
@@ -17,9 +45,10 @@ inet 192.168.XXX.XXX netmask 0xffffff00 broadcast 192.168.XXX.255
 KAFKA_ADVERTISED_HOST_NAME: 192.168.XXX.XXX
 ```
 
-### Setup Node
+### Setup Node Backend
 
 ```bash
+cd app
 yarn
 ```
 
@@ -92,5 +121,5 @@ docker compose down -v
 
 ## Build sbt
 
-- sbt: assmbely
-- `spark/target/scala-2.12/wordcounter.jar`
+- sbt shell: assmbely
+  - output: `spark/target/scala-2.12/wordcounter.jar`
