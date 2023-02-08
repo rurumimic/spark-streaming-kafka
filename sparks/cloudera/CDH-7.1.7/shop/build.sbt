@@ -17,7 +17,7 @@ libraryDependencies += "org.rogach" %% "scallop" % "4.1.0"
 libraryDependencies += "com.oracle.database.jdbc" % "ojdbc8" % "18.15.0.0"
 
 assembly / test := {}
-assembly / mainClass := Some("Counter")
+assembly / mainClass := Some("Shop")
 assembly / assemblyJarName := "shop.jar"
 
 assembly / assemblyMergeStrategy := {
