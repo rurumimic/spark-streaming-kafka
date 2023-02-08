@@ -9,11 +9,11 @@ resolvers += "Cloudera" at "https://repository.cloudera.com/artifactory/cloudera
 libraryDependencies += "org.apache.spark" %% "spark-streaming" % "3.2.0.3.2.7170.0-49"
 libraryDependencies += "org.apache.spark" %% "spark-streaming-kafka-0-10" % "3.2.0.3.2.7170.0-49"
 
-test in assembly := {}
-mainClass in assembly := Some("Counter")
-assemblyJarName in assembly := "wordcounter.jar"
+assembly / test := {}
+assembly / mainClass := Some("Counter")
+assembly / assemblyJarName := "wordcounter.jar"
 
-assemblyMergeStrategy in assembly := {
+assembly / assemblyMergeStrategy := {
   case PathList("META-INF", xs @ _*) => MergeStrategy.discard
   case x => MergeStrategy.first
 }

@@ -6,7 +6,7 @@
   - Apache
     - Latest
       - wordcounter
-        - OpenJDK 19.0.2
+        - OpenJDK 17.0.5
         - Scala 2.13.10
   - Cloudera
     - CDH 7.1.7
