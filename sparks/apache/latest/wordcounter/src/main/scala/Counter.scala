@@ -13,16 +13,17 @@ import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 
 object Counter {
 
-  private val INTERVAL = Seconds(3);
-
-  private val MASTER = "local"
-  private val KAFKA = "kafka:9092" // "localhost:9092"
-  private val FROM_TOPIC = "from-topic"
-  private val TO_TOPIC = "to-topic"
-
   def main(args: Array[String]): Unit = {
+    val arguments = new Arguments(args)
+    val INTERVAL = Seconds(arguments.interval())
+    val MASTER = arguments.master()
+    val KAFKA = arguments.kafka()
+    val FROM_TOPIC = arguments.fromTopic()
+    val TO_TOPIC = arguments.toTopic()
+
     val conf = new SparkConf().setMaster(MASTER).setAppName("WordCounter")
     val streamingContext = new StreamingContext(conf, INTERVAL)
+
 
     val kafkaParams = Map[String, Object](
       "bootstrap.servers" -> KAFKA,

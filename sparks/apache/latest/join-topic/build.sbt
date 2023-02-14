@@ -10,8 +10,8 @@ libraryDependencies += "org.apache.spark" %% "spark-streaming-kafka-0-10" % "3.3
 libraryDependencies += "org.rogach" %% "scallop" % "4.1.0"
 
 assembly / test := {}
-assembly / mainClass := Some("Counter")
-assembly / assemblyJarName := "wordcounter.jar"
+assembly / mainClass := Some("JoinTopic")
+assembly / assemblyJarName := "join-topic.jar"
 
 assembly / assemblyMergeStrategy := {
   case PathList("META-INF", xs @ _*) => MergeStrategy.discard

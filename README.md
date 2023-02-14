@@ -2,11 +2,12 @@
 
 ## Examples Versions
 
+- JDK 11
 - Sparks
   - Apache
     - Latest
       - wordcounter
-        - OpenJDK 17.0.5
+        - OpenJDK 11.0.9.1
         - Scala 2.13.10
   - Cloudera
     - CDH 7.1.7
