@@ -22,7 +22,7 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: # <HOST_IP>
       KAFKA_ZOOKEEPER_CONNECT: zoo:2181
-      KAFKA_CREATE_TOPICS: "topic-from-node:1:1,topic-to-node:1:1"
+      KAFKA_CREATE_TOPICS: "from-topic:1:1,to-topic:1:1"
       JMX_PORT: 9192
       KAFKA_JMX_OPTS: "-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka -Djava.net.preferIPv4Stack=true"
     volumes:

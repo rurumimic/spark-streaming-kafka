@@ -19,8 +19,8 @@ object Counter {
 //  private val KAFKA = "kafka:9092" // "localhost:9092"
   private val KAFKA = "localhost:9092"
 
-  private val FROM_TOPIC = "topic-from-node"
-  private val TO_TOPIC = "topic-to-node"
+  private val FROM_TOPIC = "from-topic"
+  private val TO_TOPIC = "to-topic"
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setMaster(MASTER).setAppName("NumberCount")
     val streamingContext = new StreamingContext(conf, INTERVAL)

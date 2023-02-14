@@ -11,7 +11,7 @@ const Producer = kafka.Producer;
 const Consumer = kafka.Consumer;
 const client = new kafka.KafkaClient({ kafkaHost: "127.0.0.1:9092" });
 const producer = new Producer(client);
-const consumer = new Consumer(client, [{ topic: "topic-to-node", partition: 0 }], {
+const consumer = new Consumer(client, [{ topic: "to-topic", partition: 0 }], {
   autoCommit: true,
 });
 
@@ -48,7 +48,7 @@ router.post("/subscribe", async (ctx) => {
 
   ctx.status = 201;
 
-  producer.send([{ topic: "topic-from-node", partition: 0, messages: message, attributes: 0 }], function (err, result) {
+  producer.send([{ topic: "from-topic", partition: 0, messages: message, attributes: 0 }], function (err, result) {
     // console.log('Produce Result: ', err || result);
   });
 });
