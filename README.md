@@ -22,9 +22,7 @@
 
 - spark-streaming-kafka
   - wordcounter
-- spark-streaming-kafka-zookeeper
-  - wordcounter
-    - [docker-compose.sample.yml](docker/spark-streaming-kafka-zookeeper/wordcounter/docker-compose.sample.yml)
+    - [docker-compose.sample.yml](docker/spark-streaming-kafka/wordcounter/docker-compose.sample.yml)
 
 `docker-compose.sample.yml`: Line 24. Set `KAFKA_ADVERTISED_HOST_NAME: # <HOST_IP>`
 

@@ -16,13 +16,12 @@ object Counter {
   private val INTERVAL = Seconds(3);
 
   private val MASTER = "local"
-//  private val KAFKA = "kafka:9092" // "localhost:9092"
-  private val KAFKA = "localhost:9092"
-
+  private val KAFKA = "kafka:9092" // "localhost:9092"
   private val FROM_TOPIC = "from-topic"
   private val TO_TOPIC = "to-topic"
+
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setMaster(MASTER).setAppName("NumberCount")
+    val conf = new SparkConf().setMaster(MASTER).setAppName("WordCounter")
     val streamingContext = new StreamingContext(conf, INTERVAL)
 
     val kafkaParams = Map[String, Object](

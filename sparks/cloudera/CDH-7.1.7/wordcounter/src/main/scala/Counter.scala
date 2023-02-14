@@ -22,7 +22,7 @@ object Counter {
     val FROM_TOPIC = arguments.fromTopic()
     val TO_TOPIC = arguments.toTopic()
 
-    val conf = new SparkConf().setMaster(MASTER).setAppName("NumberCount")
+    val conf = new SparkConf().setMaster(MASTER).setAppName("WordCounter")
     val streamingContext = new StreamingContext(conf, INTERVAL)
 
     val kafkaParams = Map[String, Object](
