@@ -67,7 +67,7 @@ docker compose up -d
 
 ### Kafka UI
 
-[localhost:8080](http://localhost:8080)
+[localhost:9999](http://localhost:9999)
 
 ### Kafka Consumer Node Client
 
