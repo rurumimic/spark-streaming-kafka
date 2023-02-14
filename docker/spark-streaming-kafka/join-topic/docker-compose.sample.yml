@@ -22,7 +22,7 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: # <HOST_IP>
       KAFKA_ZOOKEEPER_CONNECT: zoo:2181
-      KAFKA_CREATE_TOPICS: "from-topic:1:1,to-topic:1:1"
+      KAFKA_CREATE_TOPICS: "left-topic:1:1,right-topic:1:1,to-topic:1:1"
       JMX_PORT: 9192
       KAFKA_JMX_OPTS: "-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka -Djava.net.preferIPv4Stack=true"
     volumes:
@@ -51,5 +51,5 @@ services:
       - 8080:8080
       - 7077:7077
     volumes:
-      - ./wordcounter.jar:/tmp/wordcounter.jar
-    command: spark-submit --master spark://spark:7077 /tmp/wordcounter.jar
+      - ./join-topic.jar:/tmp/join-topic.jar
+    command: spark-submit --master spark://spark:7077 /tmp/join-topic.jar
