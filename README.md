@@ -62,6 +62,16 @@ Start a cluster:
 docker compose up -d
 ```
 
+### Spark UI
+
+[localhost:4040/streaming](http://localhost:4040/streaming)
+
+### Kafka UI
+
+[localhost:8080](http://localhost:8080)
+
+### Kafka Consumer Node Client
+
 Start a node server:
 
 ```bash
@@ -95,23 +105,6 @@ Return: [
    (fire-brick,,1), (fire-brick,1), (present,1), (Coke,1)
 ]
 ```
-
----
-
-## Kafka Manager
-
-[localhost:9000](http://localhost:9000)
-
-1. Cluster: Add Cluster
-   1. Cluster Name: anything
-   1. Cluster Zookeeper Hosts: `zoo:2181`
-   1. Check:
-      - Enable JMX Polling (Set JMX_PORT env variable before starting kafka server)
-      - Poll consumer information (Not recommended for large # of consumers if ZK is used for offsets tracking on older Kafka versions)
-
-## Spark UI
-
-[localhost:4040/streaming](http://localhost:4040/streaming)
 
 ---
 

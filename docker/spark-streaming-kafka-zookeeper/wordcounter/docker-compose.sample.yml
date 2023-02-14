@@ -28,15 +28,18 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  manager:
-    image: rurumimic/kafka-manager:latest
-    restart: always
-    container_name: manager
-    hostname: manager
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    hostname: kafka-ui
     ports:
-      - 9000:9000
+      - 8080:8080
+    depends_on:
+      - kafka
     environment:
-      ZK_HOSTS: "zoo:2181"
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_METRICS_PORT: 9192
 
   spark:
     image: bitnami/spark:latest
